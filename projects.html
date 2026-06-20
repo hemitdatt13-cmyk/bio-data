@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse Hemit Datt's development project portfolio. Filter by web apps, design templates, and tools.">
+  <title>Hemit Datt | Projects</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Ambient BG -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- Fixed Header / Navbar -->
+  <header class="header">
+    <nav class="glass-nav">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-code"></i><span>Hemit.Datt</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="hamburger" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <main>
+      <section class="section">
+        <h2 class="section-title reveal-left">My <span>Projects</span></h2>
+
+        <!-- Filtering Buttons -->
+        <div class="portfolio-filters reveal delay-100">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="web-app">Web Apps</button>
+          <button class="filter-btn" data-filter="design">UI/UX Designs</button>
+          <button class="filter-btn" data-filter="tool">Dev Tools</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid reveal delay-200">
+          
+          <!-- Project 1: Finance Dashboard -->
+          <div class="glass-card project-card web-app">
+            <div class="project-img">
+              <img src="images/project-images/project1.jpg" alt="Finance Dashboard Preview">
+            </div>
+            <div class="project-info">
+              <h3>GlassFinance Dashboard</h3>
+              <p>
+                A high-fidelity dashboard built to monitor budgets, assets, and transactions. Integrates custom canvas line charts and utilizes dark mode-first variables.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS Grid</span>
+                <span class="tag">ES6 JS</span>
+                <span class="tag">ChartJS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: SmartHome App -->
+          <div class="glass-card project-card design">
+            <div class="project-img">
+              <img src="images/project-images/project2.jpg" alt="SmartHome Mobile Interface">
+            </div>
+            <div class="project-info">
+              <h3>SmartHome iOS Layout</h3>
+              <p>
+                A conceptual design for controlling lighting, room temperatures, and media playback. Developed as interactive glass components on Figma.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Figma</span>
+                <span class="tag">UI/UX Design</span>
+                <span class="tag">Vector Art</span>
+                <span class="tag">Prototyping</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Prototype</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: CSS Orb Generator -->
+          <div class="glass-card project-card tool">
+            <div class="project-img">
+              <img src="images/project-images/project1.jpg" alt="CSS Orb Maker Preview">
+            </div>
+            <div class="project-info">
+              <h3>Neon Ambient Generator</h3>
+              <p>
+                A web-based helper tool allowing developers to visually construct layered blur gradients, exporting clean modular CSS copy-paste rules.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Vanilla JS</span>
+                <span class="tag">CSS Filters</span>
+                <span class="tag">DOM Manipulation</span>
+                <span class="tag">Utility</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+          <a href="mailto:hemitdatt@example.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 <span>Hemit Datt</span>. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Shared JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

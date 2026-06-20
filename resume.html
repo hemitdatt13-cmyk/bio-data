@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View or download Hemit Datt's professional resume. Details include development experience, tech stacks, and academic history.">
+  <title>Hemit Datt | Resume</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Ambient BG -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- Fixed Header / Navbar -->
+  <header class="header">
+    <nav class="glass-nav">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-code"></i><span>Hemit.Datt</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="hamburger" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <main>
+      <section class="section">
+        <div class="resume-section">
+          
+          <!-- Resume Actions Header -->
+          <div class="resume-header reveal-left">
+            <h2 class="section-title" style="margin-bottom: 0;">My <span>Resume</span></h2>
+            <div class="btn-container" style="margin-top: 0;">
+              <!-- Download button pointing to our text resume file -->
+              <a href="hemit-datt-resume.txt" download="Hemit-Datt-Resume.txt" class="btn btn-primary">
+                <i class="fa-solid fa-download"></i> Download Resume
+              </a>
+              <button onclick="window.print()" class="btn btn-secondary">
+                <i class="fa-solid fa-print"></i> Print Version
+              </button>
+            </div>
+          </div>
+
+          <!-- Stylized Resume Paper Sheet -->
+          <div class="resume-paper reveal delay-100">
+            <!-- Header Block -->
+            <div class="resume-title-block">
+              <div class="resume-name">
+                <h1>Hemit Datt</h1>
+                <p>Creative Frontend Developer & UI/UX Builder</p>
+              </div>
+              <div class="resume-contact-details">
+                <div><i class="fa-solid fa-envelope"></i> hemitdatt@example.com</div>
+                <div><i class="fa-solid fa-location-dot"></i> Punjab, India</div>
+                <div><i class="fa-solid fa-globe"></i> github.com/hemitdatt</div>
+              </div>
+            </div>
+
+            <!-- Body Grid -->
+            <div class="resume-body-grid">
+              
+              <!-- Left Column: Experience / Education -->
+              <div class="resume-column">
+                <!-- Section: Experience -->
+                <div>
+                  <h3 class="resume-block-title">Professional Experience</h3>
+                  
+                  <!-- Job 1 -->
+                  <div class="resume-exp-item">
+                    <div class="resume-exp-header">
+                      <h4>Junior Frontend Developer</h4>
+                      <span>2025 - Present</span>
+                    </div>
+                    <span class="company">CodeLabs Solutions, Delhi, India</span>
+                    <ul>
+                      <li>Design and implement glassmorphic UI components for enterprise applications, enhancing dashboard engagement.</li>
+                      <li>Refactored custom styling pipelines resulting in 30% reduction in stylesheet load times.</li>
+                      <li>Cooperated closely with design teams to translate Figma prototypes into pixel-perfect responsive layouts.</li>
+                    </ul>
+                  </div>
+
+                  <!-- Job 2 -->
+                  <div class="resume-exp-item">
+                    <div class="resume-exp-header">
+                      <h4>Web Development Intern</h4>
+                      <span>2024 - 2025</span>
+                    </div>
+                    <span class="company">DevSolutions Corp, Punjab, India</span>
+                    <ul>
+                      <li>Assisted in building responsive newsletters, web forms, and product landing pages.</li>
+                      <li>Isolated and resolved layout rendering defects across Safari and mobile-native web browsers.</li>
+                      <li>Developed interactive widgets using Vanilla JavaScript, optimizing scroll event performance.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Section: Education -->
+                <div>
+                  <h3 class="resume-block-title">Education History</h3>
+                  <div class="resume-exp-item">
+                    <div class="resume-exp-header">
+                      <h4>B.S. in Computer Science</h4>
+                      <span>2022 - 2026</span>
+                    </div>
+                    <span class="company">Apex Technical University</span>
+                    <p style="font-size: 0.9rem; margin-top: 0.4rem; padding-left: 0.2rem;">
+                      Specialized in web architectures and interface systems. Maintained high scores in core software modules.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Skills / Achievements -->
+              <div class="resume-column">
+                <!-- Section: Skills -->
+                <div>
+                  <h3 class="resume-block-title">Technical Skills</h3>
+                  
+                  <div class="resume-skills-group">
+                    <h5>Frontend Stacks</h5>
+                    <div class="resume-skills-tags">
+                      <span>HTML5</span>
+                      <span>CSS3 (Grid/Flex)</span>
+                      <span>JavaScript ES6</span>
+                      <span>React.js</span>
+                      <span>Sass</span>
+                    </div>
+                  </div>
+
+                  <div class="resume-skills-group">
+                    <h5>Design & Design Tools</h5>
+                    <div class="resume-skills-tags">
+                      <span>Figma</span>
+                      <span>UI/UX Prototyping</span>
+                      <span>Adobe XD</span>
+                      <span>Glassmorphism</span>
+                    </div>
+                  </div>
+
+                  <div class="resume-skills-group">
+                    <h5>Tools & Ops</h5>
+                    <div class="resume-skills-tags">
+                      <span>Git & GitHub</span>
+                      <span>NPM / Node</span>
+                      <span>Vercel / Netlify</span>
+                      <span>Responsive Testing</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section: Key Projects -->
+                <div>
+                  <h3 class="resume-block-title">Top Projects</h3>
+                  <div class="resume-exp-item" style="margin-bottom: 0.8rem;">
+                    <strong style="font-size: 0.95rem; color: var(--text-primary);">GlassFinance Tracker</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                      Integrated high-performance canvas graphs for visual finance insights.
+                    </p>
+                  </div>
+                  <div class="resume-exp-item">
+                    <strong style="font-size: 0.95rem; color: var(--text-primary);">SmartHome iOS UI</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                      Designed a futuristic UI prototype for internet-of-things home hardware systems.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+          <a href="mailto:hemitdatt@example.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 <span>Hemit Datt</span>. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Shared JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

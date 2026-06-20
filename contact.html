@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Hemit Datt. Send messages, project inquiries, or connect on social platforms.">
+  <title>Hemit Datt | Contact Me</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Ambient BG -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- Fixed Header / Navbar -->
+  <header class="header">
+    <nav class="glass-nav">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-code"></i><span>Hemit.Datt</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="hamburger" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <main>
+      <section class="section">
+        <h2 class="section-title reveal-left">Let's <span>Connect</span></h2>
+
+        <div class="contact-grid">
+          
+          <!-- Left Column: Contact details and socials -->
+          <div class="contact-info reveal-left delay-100">
+            <h3>Get in <span>Touch</span></h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Have a project in mind, a job opportunity, or just want to say hello? Drop me a message and I'll get back to you as soon as possible.
+            </p>
+
+            <!-- Info Cards -->
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email Me</h4>
+                <p><a href="mailto:hemitdatt@example.com">hemitdatt@example.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-details">
+                <h4>My Location</h4>
+                <p>Punjab, India</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Freelance Status</h4>
+                <p>Available for new projects</p>
+              </div>
+            </div>
+
+            <!-- Social handles section -->
+            <div class="contact-social-section">
+              <h3>Connect on <span>Socials</span></h3>
+              <div class="contact-social-icons">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fa-brands fa-twitter"></i></a>
+                <a href="mailto:hemitdatt@example.com" aria-label="Send Email"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Contact form -->
+          <div class="glass-card reveal-right delay-200">
+            <form id="contact-form" class="contact-form" novalidate>
+              <!-- Name Input -->
+              <div class="form-group">
+                <input type="text" id="name" class="form-input" placeholder=" " required autocomplete="name">
+                <label for="name" class="form-label">Full Name</label>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-group">
+                <input type="email" id="email" class="form-input" placeholder=" " required autocomplete="email">
+                <label for="email" class="form-label">Email Address</label>
+              </div>
+
+              <!-- Subject Input -->
+              <div class="form-group">
+                <input type="text" id="subject" class="form-input" placeholder=" " required>
+                <label for="subject" class="form-label">Subject</label>
+              </div>
+
+              <!-- Message Input -->
+              <div class="form-group">
+                <textarea id="message" class="form-input" placeholder=" " required></textarea>
+                <label for="message" class="form-label">Message</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Success / Error Alert Notification Popup -->
+    <div id="alert-popup" class="alert-popup" aria-live="polite">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Message sent successfully!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+          <a href="mailto:hemitdatt@example.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 <span>Hemit Datt</span>. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Shared JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

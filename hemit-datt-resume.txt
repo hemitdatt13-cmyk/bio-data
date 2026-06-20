@@ -1,0 +1,64 @@
+======================================================================
+                         HEMIT DATT
+======================================================================
+Frontend Developer & UI/UX Specialist | India
+Email: hemitdatt@example.com
+GitHub: github.com/hemitdatt
+Portfolio: Hemit Datt Animated Portfolio Website
+
+----------------------------------------------------------------------
+PROFESSIONAL SUMMARY
+----------------------------------------------------------------------
+Passionate and detail-oriented frontend developer with a focus on building 
+high-performance, modern, and visually compelling web applications. 
+Specialized in responsive web design, glassmorphic layout principles, 
+and hardware-accelerated animations using HTML5, CSS3, and JavaScript.
+
+----------------------------------------------------------------------
+TECHNICAL SKILLS
+----------------------------------------------------------------------
+* Frontend Development: HTML5, CSS3, CSS Grid, Flexbox, JavaScript ES6+, React.js
+* Design & Prototyping: Figma, Adobe XD, Glassmorphism, UI/UX Animations
+* Version Control & Deployment: Git, GitHub, NPM, Vercel, Netlify, Web Performance
+
+----------------------------------------------------------------------
+PROFESSIONAL EXPERIENCE
+----------------------------------------------------------------------
+Junior Frontend Developer
+CodeLabs Solutions, Delhi, India
+2025 - Present
+* Developed glassmorphic UI components for high-traffic financial analytics 
+  dashboards, increasing user interaction.
+* Refactored responsive styling layers, cutting file weight and stylesheet 
+  loading delays by 30%.
+* Collated layout drafts in Figma and converted them to production-grade, 
+  semantic HTML/CSS templates.
+
+Web Development Intern
+DevSolutions Corp, Punjab, India
+2024 - 2025
+* Built responsive layouts for customer registration pipelines and landing pages.
+* Diagnosed browser compatibility bugs, aligning desktop features with mobile
+  Safari and Chrome renderings.
+* Enhanced page load efficiency by cleaning up scroll-listening functions.
+
+----------------------------------------------------------------------
+EDUCATION HISTORY
+----------------------------------------------------------------------
+Bachelor of Science in Computer Science
+Apex Technical University
+2022 - 2026
+* Focus: Software engineering paradigms, human-computer interface design, 
+  data structures, and web technologies.
+
+----------------------------------------------------------------------
+KEY PROJECTS
+----------------------------------------------------------------------
+GlassFinance Tracker
+* Created an interactive financial tracker interface. Featured dynamic canvas 
+  charts and automated light/dark modes.
+
+SmartHome iOS UI Design
+* Visualized custom UI buttons and sliders on Figma to simulate smart house 
+  hardware components.
+======================================================================
