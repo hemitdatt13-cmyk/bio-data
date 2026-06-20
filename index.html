@@ -3,15 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to Hemit Datt's official animated portfolio. I am a creative software developer specializing in responsive glassmorphic web experiences.">
-  <title>Hemit Datt | Home</title>
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Welcome to Hemit Datt's official professional developer portfolio. Explore modern frontend solutions, responsive styling layers, glassmorphic interfaces, and UI/UX projects.">
+  <title>Hemit Datt | Frontend Developer & UI/UX Specialist Portfolio</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts (Outfit & Fira Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <!-- Ambient BG -->
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100" class="position-relative">
+
+  <!-- Ambient background glow orbs -->
   <div class="ambient-bg">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -19,7 +30,7 @@
   </div>
 
   <!-- Loading Screen -->
-  <div class="loader-wrapper">
+  <div class="loader-wrapper" id="loader-wrapper">
     <div class="loader">
       <div class="loader-ring"></div>
       <div class="loader-ring"></div>
@@ -29,109 +40,698 @@
 
   <!-- Fixed Header / Navbar -->
   <header class="header">
-    <nav class="glass-nav">
-      <a href="index.html" class="logo">
-        <i class="fa-solid fa-code"></i><span>Hemit.Datt</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="certificates.html">Certificates</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-          <i class="fa-solid fa-moon"></i>
-          <i class="fa-solid fa-sun"></i>
-        </button>
-        <button class="hamburger" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <nav class="navbar navbar-expand-lg glass-nav" id="main-nav">
+      <div class="container-fluid px-lg-5">
+        <a href="#home" class="logo navbar-brand">
+          <i class="fa-solid fa-code"></i><span>Hemit.Datt</span>
+        </a>
+        
+        <!-- Mobile Actions Group -->
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          
+          <button class="navbar-toggler hamburger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-end order-lg-2" id="navbarNav">
+          <ul class="navbar-nav nav-links gap-lg-3 text-center my-3 my-lg-0">
+            <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
 
   <!-- Page Container -->
-  <div class="page-container">
+  <div class="page-container container-fluid px-0">
     <main>
-      <section class="section">
-        <div class="hero-container">
-          <!-- Hero Text Content -->
-          <div class="hero-content reveal-left">
-            <h3>Welcome to my creative space</h3>
-            <h1>Hi, I'm <span>Hemit Datt</span></h1>
-            <div class="hero-subtitle">
-              I am a <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+      
+      <!-- Hero Section -->
+      <section id="home" class="section hero-section d-flex align-items-center">
+        <div class="container py-5">
+          <div class="row align-items-center g-5">
+            <!-- Hero Content -->
+            <div class="col-lg-7 text-lg-start text-center reveal-left">
+              <h3 class="hero-welcome text-uppercase tracking-wider">Welcome to my creative space</h3>
+              <h1 class="hero-title mt-2">Hi, I'm <span>Hemit Datt</span></h1>
+              <div class="hero-subtitle my-3">
+                I am a <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+              </div>
+              <p class="hero-desc col-xl-10 mx-lg-0 mx-auto">
+                A passionate frontend developer and UI/UX specialist based in India. I craft high-performance, modern, and visually compelling web applications with glassmorphic layouts and seamless hardware-accelerated animations.
+              </p>
+              <div class="btn-container justify-content-lg-start justify-content-center mt-4">
+                <a href="#portfolio" class="btn btn-primary btn-transition">
+                  <i class="fa-solid fa-briefcase"></i> View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary btn-transition">
+                  <i class="fa-solid fa-envelope"></i> Let's Connect
+                </a>
+              </div>
             </div>
-            <p class="hero-desc">
-              A passionate front-end developer and UI/UX enthusiast. I build visually stunning, interactive, and high-performance web applications that make a difference. Let's make something amazing together!
-            </p>
-            <div class="btn-container">
-              <a href="projects.html" class="btn btn-primary">
-                <i class="fa-solid fa-briefcase"></i> View My Work
-              </a>
-              <a href="contact.html" class="btn btn-secondary">
-                <i class="fa-solid fa-envelope"></i> Let's Connect
-              </a>
+
+            <!-- Hero Avatar Visual -->
+            <div class="col-lg-5 d-flex justify-content-center reveal-right">
+              <div class="avatar-frame-container">
+                <div class="avatar-frame">
+                  <!-- Premium placeholder avatar -->
+                  <img src="images/profile.jpg" alt="Hemit Datt Profile Portrait" class="img-fluid" loading="eager">
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Hero Image -->
-          <div class="hero-visual reveal-right">
-            <div class="avatar-frame">
-              <img src="images/profile.jpg" alt="Hemit Datt profile photo" loading="eager">
+          <!-- Quick Statistics Bar -->
+          <div class="row stats-grid g-4 mt-5 text-center reveal delay-300">
+            <div class="col-6 col-md-3">
+              <div class="glass-card stat-card h-100">
+                <span class="stat-num">2+</span>
+                <span class="stat-label">Years Coding</span>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Quick Stats Grid -->
-        <div class="stats-grid reveal delay-300">
-          <div class="glass-card stat-card">
-            <span class="stat-num">2+</span>
-            <span class="stat-label">Years of coding</span>
-          </div>
-          <div class="glass-card stat-card">
-            <span class="stat-num">15+</span>
-            <span class="stat-label">Projects completed</span>
-          </div>
-          <div class="glass-card stat-card">
-            <span class="stat-num">10+</span>
-            <span class="stat-label">Certifications</span>
-          </div>
-          <div class="glass-card stat-card">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Client satisfaction</span>
+            <div class="col-6 col-md-3">
+              <div class="glass-card stat-card h-100">
+                <span class="stat-num">15+</span>
+                <span class="stat-label">Projects Built</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="glass-card stat-card h-100">
+                <span class="stat-num">10+</span>
+                <span class="stat-label">Certifications</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="glass-card stat-card h-100">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Client Focus</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- About & Timeline Section -->
+      <section id="about" class="section about-section">
+        <div class="container py-5">
+          <h2 class="section-title reveal-left">About <span>Me</span></h2>
+          
+          <div class="row g-5 align-items-start mt-2">
+            <!-- Biography Details Card -->
+            <div class="col-lg-6 reveal-left delay-100">
+              <div class="glass-card h-100">
+                <h3 class="about-card-title mb-4">Who is <span>Hemit Datt</span>?</h3>
+                <p class="about-bio-text">
+                  I am a web designer and front-end developer who focuses on turning UI/UX visual concepts into production-grade templates. I love crafting digital products that solve complex problems with simple, elegant, and engaging solutions.
+                </p>
+                <p class="about-bio-text mt-3">
+                  My experience spans glassmorphic layout principles, cutting file delays and stylesheet payloads, and debugging cross-browser issues. I combine aesthetic design values with strict compliance to responsive web practices.
+                </p>
+                
+                <!-- Detailed metadata grid -->
+                <div class="row g-3 personal-info mt-4">
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>Name:</strong> <span>Hemit Datt</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>Email:</strong> <span>hemitdatt@example.com</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>Location:</strong> <span>Delhi / Punjab, India</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>Degree:</strong> <span>B.Sc in Computer Science</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>Availability:</strong> <span>Open for Projects</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="info-item">
+                      <strong>GitHub:</strong> <span>github.com/hemitdatt</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="btn-container mt-4">
+                  <!-- Anchor linking to Contact Section -->
+                  <a href="#contact" class="btn btn-primary">
+                    <i class="fa-solid fa-message"></i> Let's Talk
+                  </a>
+                  <!-- Resume download simulation link -->
+                  <a href="archive/hemit-datt-resume.txt" target="_blank" class="btn btn-secondary">
+                    <i class="fa-solid fa-file-invoice"></i> View Raw Resume
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Journey Timeline -->
+            <div class="col-lg-6 reveal-right delay-200">
+              <div class="glass-card">
+                <h3 class="about-card-title mb-4"><i class="fa-solid fa-graduation-cap"></i> My <span>Journey</span></h3>
+                
+                <div class="timeline">
+                  <!-- Timeline Node 1 -->
+                  <div class="timeline-node">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header d-flex flex-wrap justify-content-between align-items-center mb-2">
+                      <span class="timeline-role">Junior Frontend Developer</span>
+                      <span class="timeline-badge">2025 - Present</span>
+                    </div>
+                    <span class="timeline-company d-block mb-2">CodeLabs Solutions, Delhi, India</span>
+                    <ul class="timeline-details">
+                      <li>Designed glassmorphic analytics components increasing interface interactions.</li>
+                      <li>Refactored grid layers, cutting CSS payloads and layout delays by 30%.</li>
+                      <li>Developed production templates from visual drafts using Figma.</li>
+                    </ul>
+                  </div>
+
+                  <!-- Timeline Node 2 -->
+                  <div class="timeline-node">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header d-flex flex-wrap justify-content-between align-items-center mb-2">
+                      <span class="timeline-role">Web Development Intern</span>
+                      <span class="timeline-badge">2024 - 2025</span>
+                    </div>
+                    <span class="timeline-company d-block mb-2">DevSolutions Corp, Punjab, India</span>
+                    <ul class="timeline-details">
+                      <li>Constructed fluid CSS layout templates for pipelines and registration landing pages.</li>
+                      <li>Diagnosed rendering differences between Safari, Chrome, and Firefox browsers.</li>
+                      <li>Optimized page performance by scrubbing redundant scroll window event listeners.</li>
+                    </ul>
+                  </div>
+
+                  <!-- Timeline Node 3 -->
+                  <div class="timeline-node mb-0">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header d-flex flex-wrap justify-content-between align-items-center mb-2">
+                      <span class="timeline-role">B.Sc. in Computer Science</span>
+                      <span class="timeline-badge">2022 - 2026</span>
+                    </div>
+                    <span class="timeline-company d-block mb-2">Apex Technical University</span>
+                    <ul class="timeline-details">
+                      <li>Focused on user experience interfaces, code structures, and web technologies.</li>
+                      <li>Graduated with major principles in software architecture paradigms.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services & Features Section -->
+      <section id="services" class="section services-section">
+        <div class="container py-5">
+          <h2 class="section-title reveal-left">What I <span>Offer</span></h2>
+          
+          <div class="row g-4 mt-2">
+            <!-- Service 1: Custom Frontend -->
+            <div class="col-md-6 col-xl-3 reveal delay-100">
+              <div class="glass-card service-card h-100 text-center text-md-start">
+                <div class="service-icon mb-4 text-center">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h3>Frontend Development</h3>
+                <p>
+                  Writing clean, component-focused, and semantic HTML5, CSS3, and JavaScript templates. Specialized in React.js.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service 2: Responsive layouts -->
+            <div class="col-md-6 col-xl-3 reveal delay-200">
+              <div class="glass-card service-card h-100 text-center text-md-start">
+                <div class="service-icon mb-4 text-center">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3>Responsive Design</h3>
+                <p>
+                  Optimizing and converting layouts to operate beautifully across mobile viewports, tablets, and wide screens.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service 3: UI/UX Prototyping -->
+            <div class="col-md-6 col-xl-3 reveal delay-300">
+              <div class="glass-card service-card h-100 text-center text-md-start">
+                <div class="service-icon mb-4 text-center">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3>UI/UX Prototyping</h3>
+                <p>
+                  Drafting and constructing interactive layout maps in Figma. Focusing on glassmorphism and modern colors.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service 4: Optimization and Audits -->
+            <div class="col-md-6 col-xl-3 reveal delay-400">
+              <div class="glass-card service-card h-100 text-center text-md-start">
+                <div class="service-icon mb-4 text-center">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <h3>Speed Optimization</h3>
+                <p>
+                  Scrubbing stylesheets, compressing image resources, and eliminating complex script leaks for fast loads.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section skills-section">
+        <div class="container py-5">
+          <h2 class="section-title reveal-left">Skills & <span>Technologies</span></h2>
+          
+          <div class="row g-5 mt-2">
+            <!-- Category 1: Development -->
+            <div class="col-lg-6 reveal-left delay-100">
+              <div class="glass-card h-100">
+                <h3 class="skills-category-title mb-4">
+                  <i class="fa-solid fa-code-commit"></i> Frontend Engineering
+                </h3>
+                
+                <div class="skills-list d-flex flex-column gap-4">
+                  <!-- Skill Item 1 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>HTML5 & Semantic Structure</span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="95%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 2 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>CSS3, Flexbox & CSS Grid</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="90%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 3 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>JavaScript ES6+ & Async APIs</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="85%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 4 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>React.js / Frontend Frameworks</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="80%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 2: Design & Tools -->
+            <div class="col-lg-6 reveal-right delay-200">
+              <div class="glass-card h-100">
+                <h3 class="skills-category-title mb-4">
+                  <i class="fa-solid fa-screwdriver-wrench"></i> Tools & Methods
+                </h3>
+                
+                <div class="skills-list d-flex flex-column gap-4">
+                  <!-- Skill Item 1 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>Figma Designing & Prototyping</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="85%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 2 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>Glassmorphic Layout Rules</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="90%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 3 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>Git Version Control & Github Flow</span>
+                      <span>88%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="88%"></div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Item 4 -->
+                  <div class="skill-item">
+                    <div class="skill-info d-flex justify-content-between mb-2">
+                      <span>SEO & Lighthouse Optimization</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                      <div class="skill-bar-fill" style="width: 0%" data-skill="80%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio & Certificates Section -->
+      <section id="portfolio" class="section portfolio-section">
+        <div class="container py-5">
+          <h2 class="section-title reveal-left">Creative <span>Showcase</span></h2>
+          
+          <!-- Filtering Navigation -->
+          <div class="row mt-2 mb-4 justify-content-center reveal delay-100">
+            <div class="col-12 d-flex justify-content-center flex-wrap gap-2 portfolio-filters">
+              <button class="filter-btn active" data-filter="all">Show All</button>
+              <button class="filter-btn" data-filter="projects">Projects</button>
+              <button class="filter-btn" data-filter="certificates">Certificates</button>
+            </div>
+          </div>
+
+          <!-- Portfolio Grid -->
+          <div class="row g-4 projects-grid reveal delay-200">
+            <!-- Project 1: Finance -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="projects">
+              <div class="glass-card project-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="project-img mb-3">
+                    <img src="images/project-images/project1.jpg" alt="GlassFinance Dashboard interface layout representation" class="img-fluid rounded">
+                  </div>
+                  <h3>GlassFinance Tracker</h3>
+                  <p class="project-card-desc">
+                    An interactive finance monitoring dashboard built with modular custom line metrics. Supports dark mode configurations.
+                  </p>
+                  <div class="project-tags d-flex flex-wrap gap-2 my-3">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS Grid</span>
+                    <span class="tag">ES6 JS</span>
+                    <span class="tag">ChartJS</span>
+                  </div>
+                </div>
+                <div class="project-links d-flex gap-3">
+                  <a href="https://github.com/hemitdatt" target="_blank" rel="noopener noreferrer" class="link-item"><i class="fa-brands fa-github"></i> Code</a>
+                  <a href="https://github.com/hemitdatt" target="_blank" rel="noopener noreferrer" class="link-item"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2: SmartHome Layout -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="projects">
+              <div class="glass-card project-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="project-img mb-3">
+                    <img src="images/project-images/project2.jpg" alt="SmartHome iOS App layout illustration" class="img-fluid rounded">
+                  </div>
+                  <h3>SmartHome iOS Design</h3>
+                  <p class="project-card-desc">
+                    Conceptual vector UI layers built in Figma. Highlights buttons, dynamic room controls, and glass overlays.
+                  </p>
+                  <div class="project-tags d-flex flex-wrap gap-2 my-3">
+                    <span class="tag">Figma</span>
+                    <span class="tag">UI/UX Design</span>
+                    <span class="tag">Vector Graphics</span>
+                    <span class="tag">Prototyping</span>
+                  </div>
+                </div>
+                <div class="project-links d-flex gap-3">
+                  <a href="https://github.com/hemitdatt" target="_blank" rel="noopener noreferrer" class="link-item"><i class="fa-brands fa-github"></i> Details</a>
+                  <a href="https://github.com/hemitdatt" target="_blank" rel="noopener noreferrer" class="link-item"><i class="fa-solid fa-arrow-up-right-from-square"></i> Figma Link</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 1: JavaScript -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="certificates">
+              <div class="glass-card cert-card h-100 d-flex flex-column justify-content-between">
+                <div class="cert-card-content">
+                  <div class="cert-img-container mb-3 position-relative">
+                    <img src="images/certificate-images/cert1.jpg" alt="Advanced JavaScript and ES6 Certificate Preview" class="img-fluid rounded cert-trigger">
+                    <div class="cert-overlay-hover d-flex justify-content-center align-items-center">
+                      <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                  </div>
+                  <h3>Advanced JS & ES6</h3>
+                  <p class="cert-issuer text-muted">Global Tech University</p>
+                  <div class="cert-meta mt-2 mb-3">
+                    <span class="d-block"><i class="fa-solid fa-calendar-days"></i> Issued: Jan 2025</span>
+                    <span class="d-block"><i class="fa-solid fa-hashtag"></i> ID: JS-83921-HD</span>
+                  </div>
+                </div>
+                <button class="btn btn-secondary w-100 view-cert-btn"><i class="fa-solid fa-eye"></i> Expand Certificate</button>
+              </div>
+            </div>
+
+            <!-- Certificate 2: UI/UX -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="certificates">
+              <div class="glass-card cert-card h-100 d-flex flex-column justify-content-between">
+                <div class="cert-card-content">
+                  <div class="cert-img-container mb-3 position-relative">
+                    <img src="images/certificate-images/cert2.jpg" alt="UI/UX Architecture & Prototyping Certification Preview" class="img-fluid rounded cert-trigger">
+                    <div class="cert-overlay-hover d-flex justify-content-center align-items-center">
+                      <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                  </div>
+                  <h3>UI/UX Architecture</h3>
+                  <p class="cert-issuer text-muted">Design Guild Institute</p>
+                  <div class="cert-meta mt-2 mb-3">
+                    <span class="d-block"><i class="fa-solid fa-calendar-days"></i> Issued: Oct 2024</span>
+                    <span class="d-block"><i class="fa-solid fa-hashtag"></i> ID: UI-40192-HD</span>
+                  </div>
+                </div>
+                <button class="btn btn-secondary w-100 view-cert-btn"><i class="fa-solid fa-eye"></i> Expand Certificate</button>
+              </div>
+            </div>
+
+            <!-- Certificate 3: Responsive Design -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="certificates">
+              <div class="glass-card cert-card h-100 d-flex flex-column justify-content-between">
+                <div class="cert-card-content">
+                  <div class="cert-img-container mb-3 position-relative">
+                    <img src="images/certificate-images/cert1.jpg" alt="Responsive Web Design Fundamentals Certificate Preview" class="img-fluid rounded cert-trigger">
+                    <div class="cert-overlay-hover d-flex justify-content-center align-items-center">
+                      <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                  </div>
+                  <h3>Responsive Fundamentals</h3>
+                  <p class="cert-issuer text-muted">Web Standards Consortium</p>
+                  <div class="cert-meta mt-2 mb-3">
+                    <span class="d-block"><i class="fa-solid fa-calendar-days"></i> Issued: Jun 2024</span>
+                    <span class="d-block"><i class="fa-solid fa-hashtag"></i> ID: WD-19405-HD</span>
+                  </div>
+                </div>
+                <button class="btn btn-secondary w-100 view-cert-btn"><i class="fa-solid fa-eye"></i> Expand Certificate</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section contact-section">
+        <div class="container py-5">
+          <h2 class="section-title reveal-left">Get In <span>Touch</span></h2>
+          
+          <div class="row g-5 mt-2 justify-content-between">
+            <!-- Contact details -->
+            <div class="col-lg-5 reveal-left delay-100">
+              <div class="glass-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                  <h3 class="about-card-title mb-4">Let's build something <span>incredible</span></h3>
+                  <p class="contact-sub-text">
+                    I am currently available for frontend development jobs, styling integrations, and interface design projects. Drop a line and let's coordinate!
+                  </p>
+                  
+                  <div class="contact-info-list d-flex flex-column gap-4 mt-5">
+                    <!-- Info item 1 -->
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="contact-icon-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                      </div>
+                      <div>
+                        <span class="d-block contact-info-label text-uppercase text-muted">Email Me</span>
+                        <a href="mailto:hemitdatt@example.com" class="contact-info-value">hemitdatt@example.com</a>
+                      </div>
+                    </div>
+
+                    <!-- Info item 2 -->
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="contact-icon-wrapper">
+                        <i class="fa-solid fa-location-dot"></i>
+                      </div>
+                      <div>
+                        <span class="d-block contact-info-label text-uppercase text-muted">Location</span>
+                        <span class="contact-info-value">Delhi & Punjab, India</span>
+                      </div>
+                    </div>
+
+                    <!-- Info item 3 -->
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="contact-icon-wrapper">
+                        <i class="fa-solid fa-globe"></i>
+                      </div>
+                      <div>
+                        <span class="d-block contact-info-label text-uppercase text-muted">Social Channels</span>
+                        <span class="contact-info-value">Open to direct messages</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer Socials Row -->
+                <div class="footer-socials d-flex gap-3 justify-content-start mt-5 pt-3 border-top border-secondary-subtle">
+                  <a href="https://github.com/hemitdatt" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="mailto:hemitdatt@example.com"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="col-lg-7 reveal-right delay-200">
+              <div class="glass-card">
+                <h3 class="about-card-title mb-4">Send a <span>Message</span></h3>
+                
+                <form id="contact-form" class="needs-validation" novalidate>
+                  <div class="row g-3">
+                    
+                    <!-- Name Input -->
+                    <div class="col-md-6">
+                      <div class="form-group-custom position-relative">
+                        <input type="text" class="form-input w-100" id="name" required placeholder=" " autocomplete="name">
+                        <label for="name" class="form-label-custom">Your Name</label>
+                        <i class="fa-solid fa-user form-icon-inside"></i>
+                      </div>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="col-md-6">
+                      <div class="form-group-custom position-relative">
+                        <input type="email" class="form-input w-100" id="email" required placeholder=" " autocomplete="email">
+                        <label for="email" class="form-label-custom">Your Email</label>
+                        <i class="fa-solid fa-envelope form-icon-inside"></i>
+                      </div>
+                    </div>
+
+                    <!-- Subject Input -->
+                    <div class="col-12">
+                      <div class="form-group-custom position-relative">
+                        <input type="text" class="form-input w-100" id="subject" placeholder=" ">
+                        <label for="subject" class="form-label-custom">Subject</label>
+                        <i class="fa-solid fa-paperclip form-icon-inside"></i>
+                      </div>
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="col-12">
+                      <div class="form-group-custom position-relative">
+                        <textarea class="form-input w-100 form-textarea" id="message" required placeholder=" " rows="5"></textarea>
+                        <label for="message" class="form-label-custom">Message</label>
+                        <i class="fa-solid fa-pen form-icon-inside pt-1"></i>
+                      </div>
+                    </div>
+
+                    <!-- Action Submit Button -->
+                    <div class="col-12 mt-4">
+                      <button type="submit" class="btn btn-primary w-100 text-center py-3">
+                        <i class="fa-solid fa-paper-plane"></i> Send Secure Message
+                      </button>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
-          <a href="mailto:hemitdatt@example.com"><i class="fa-solid fa-envelope"></i></a>
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <div class="footer-content">
+          <p class="mb-0">&copy; 2026 <span>Hemit Datt</span>. All Rights Reserved. Built with Bootstrap 5.</p>
         </div>
-        <p>&copy; 2026 <span>Hemit Datt</span>. All Rights Reserved.</p>
       </div>
     </footer>
   </div>
 
+  <!-- Lightbox Modal for Certificate Previews -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <div class="lightbox-content">
+      <span class="lightbox-close" aria-label="Close Lightbox">&times;</span>
+      <img src="" alt="Certificate Details Expanded View">
+      <div class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification Banner -->
+  <div id="alert-popup" class="alert-popup" role="alert">
+    <i class="fa-solid fa-circle-check"></i>
+    <span>Message sent!</span>
+  </div>
+
   <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Back to Top">
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 
-  <!-- Shared JavaScript -->
+  <!-- Bootstrap 5 Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Shared Javascript -->
   <script src="js/script.js"></script>
 </body>
 </html>

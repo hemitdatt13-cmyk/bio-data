@@ -1,57 +1,47 @@
 /* 
    Hemit Datt Portfolio Website
-   Shared Script File (script.js)
-   Features: Loader control, page transitions, dark/light theme, typing effect, 
-             scroll reveal, projects filtering, image lightbox, contact validation.
+   Interactive Script File (script.js)
+   Features: 
+     - Window loader control
+     - Dark/Light theme toggling & persistence
+     - Navbar scroll transitions
+     - Typist cycling animation
+     - Viewport intersection observer for scroll-reveals & skill bar expansions
+     - Portfolio isotope-style category filtering
+     - Image Lightbox Modal for certificate zooms
+     - Custom input fields validation and simulated secure submissions
 */
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // === 1. PAGE LOADER ===
-  const loader = document.querySelector('.loader-wrapper');
+  const loader = document.getElementById('loader-wrapper');
   if (loader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loader.classList.add('fade-out');
-      }, 300);
-    });
-    // Fallback if window load doesn't fire immediately
-    setTimeout(() => {
+    const fadeOutLoader = () => {
       loader.classList.add('fade-out');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+    };
+
+    // Fade out once window assets are fully loaded
+    window.addEventListener('load', fadeOutLoader);
+
+    // Fallback if loading takes too long (2 seconds max)
+    setTimeout(() => {
+      if (!loader.classList.contains('fade-out')) {
+        fadeOutLoader();
+      }
     }, 2000);
   }
 
-  // === 2. SMOOTH PAGE TRANSITIONS ===
-  const pageContainer = document.querySelector('.page-container');
-  const navLinksList = document.querySelectorAll('.nav-links a, .logo, .btn-transition');
-  
-  if (pageContainer) {
-    navLinksList.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const targetUrl = link.getAttribute('href');
-        
-        // Intercept relative page links, skip anchors and blank targets
-        if (targetUrl && 
-            targetUrl.endsWith('.html') && 
-            !link.getAttribute('target') && 
-            !targetUrl.startsWith('#')) {
-          e.preventDefault();
-          
-          pageContainer.classList.add('page-exit');
-          
-          setTimeout(() => {
-            window.location.href = targetUrl;
-          }, 350); // Matches CSS transition duration
-        }
-      });
-    });
-  }
-
-  // === 3. DARK / LIGHT THEME TOGGLE ===
+  // === 2. DARK / LIGHT THEME TOGGLER ===
   const themeToggle = document.getElementById('theme-toggle');
   
-  const getThemePreference = () => {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) return savedTheme;
+  const getSavedTheme = () => {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved) return saved;
+    // Fallback to system preferences
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   };
 
@@ -60,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('portfolio-theme', theme);
   };
 
-  // Initialize Theme
-  const currentTheme = getThemePreference();
+  // Initialize theme on start
+  const currentTheme = getSavedTheme();
   applyTheme(currentTheme);
 
   if (themeToggle) {
@@ -72,20 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === 4. NAVBAR SCROLL EFFECT & ACTIVE STATE ===
+  // === 3. NAVBAR SCROLL ACTION & AUTO-CLOSE MOBILE MENU ===
   const header = document.querySelector('.header');
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navbarCollapse = document.getElementById('navbarNav');
+  const bsCollapse = navbarCollapse ? new bootstrap.Collapse(navbarCollapse, {toggle: false}) : null;
   
-  // Set current active class in header
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage) {
-      a.classList.add('active');
-    } else {
-      a.classList.remove('active');
-    }
-  });
-
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -94,76 +75,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === 5. MOBILE MENU HAMBURGER ===
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
+  // Auto-collapse mobile navbar after clicking any nav link
+  const navLinksList = document.querySelectorAll('.nav-links .nav-link');
+  navLinksList.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navbarCollapse && navbarCollapse.classList.contains('show') && bsCollapse) {
+        bsCollapse.hide();
+      }
     });
+  });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-  }
-
-  // === 6. TYPING ANIMATION (HOME PAGE) ===
+  // === 4. TYPING ANIMATION (HERO SECTION) ===
   const typedTextSpan = document.querySelector('.typed-text');
   const cursorSpan = document.querySelector('.cursor');
   
   if (typedTextSpan) {
-    const textArray = ["Creative Developer", "UI/UX Designer", "Problem Solver", "Tech Enthusiast"];
-    const typingDelay = 100;
-    const erasingDelay = 50;
-    const newTextDelay = 2000; // Delay between word cycles
-    let textArrayIndex = 0;
+    const wordsArray = ["Frontend Developer", "UI/UX Specialist", "Responsive Designer", "Creative Thinker"];
+    const typingSpeed = 100;
+    const erasingSpeed = 60;
+    const wordDelay = 2000; // Duration word sits complete
+    
+    let wordIndex = 0;
     let charIndex = 0;
 
-    function type() {
-      if (charIndex < textArray[textArrayIndex].length) {
+    const typeWord = () => {
+      if (charIndex < wordsArray[wordIndex].length) {
         if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        typedTextSpan.textContent += wordsArray[wordIndex].charAt(charIndex);
         charIndex++;
-        setTimeout(type, typingDelay);
+        setTimeout(typeWord, typingSpeed);
       } else {
         cursorSpan.classList.remove("typing");
-        setTimeout(erase, newTextDelay);
+        setTimeout(eraseWord, wordDelay);
       }
-    }
+    };
 
-    function erase() {
+    const eraseWord = () => {
       if (charIndex > 0) {
         if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        typedTextSpan.textContent = wordsArray[wordIndex].substring(0, charIndex - 1);
         charIndex--;
-        setTimeout(erase, erasingDelay);
+        setTimeout(eraseWord, erasingSpeed);
       } else {
         cursorSpan.classList.remove("typing");
-        textArrayIndex++;
-        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-        setTimeout(type, typingDelay + 300);
+        wordIndex = (wordIndex + 1) % wordsArray.length;
+        setTimeout(typeWord, typingSpeed + 300);
       }
-    }
+    };
 
-    // Start typing effect on load
-    setTimeout(type, newTextDelay - 1000);
+    // Kickoff typing animation on load
+    setTimeout(typeWord, 1000);
   }
 
-  // === 7. SCROLL REVEAL SYSTEM & SKILL BARS ===
+  // === 5. SCROLL VIEWPORT REVEAL & SKILLS PROGRESS ANIMATIONS ===
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   
-  const revealObserver = new IntersectionObserver((entries, observer) => {
+  const viewportObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        // Add active reveal transition class
         entry.target.classList.add('revealed');
         
-        // If it is a skill list container, animate the skill fills inside it
+        // Trigger skill fills animation if this container is revealed
         const skillFills = entry.target.querySelectorAll('.skill-bar-fill');
         if (skillFills.length > 0) {
           skillFills.forEach(fill => {
@@ -172,185 +145,202 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
         
+        // Stop tracking after it animates in once
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15,
+    threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(el => viewportObserver.observe(el));
 
-  // === 8. BACK TO TOP BUTTON ===
-  const backToTop = document.querySelector('.back-to-top');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
+  // === 6. PORTFOLIO ISOTOPE-STYLE CARD FILTERING ===
+  const filterButtons = document.querySelectorAll('.portfolio-filters .filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-
-  // === 9. PROJECT FILTERING (PROJECTS PAGE) ===
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  if (filterButtons.length > 0 && projectCards.length > 0) {
+  if (filterButtons.length > 0 && portfolioItems.length > 0) {
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Toggle Active button
+        // Toggle Active highlight class
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        const filterValue = btn.getAttribute('data-filter');
+        const activeFilter = btn.getAttribute('data-filter');
 
-        projectCards.forEach(card => {
-          if (filterValue === 'all') {
-            card.style.display = 'flex';
-            setTimeout(() => card.style.opacity = '1', 50);
+        portfolioItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          
+          if (activeFilter === 'all') {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 50);
+          } else if (category === activeFilter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 50);
           } else {
-            if (card.classList.contains(filterValue)) {
-              card.style.display = 'flex';
-              setTimeout(() => card.style.opacity = '1', 50);
-            } else {
-              card.style.opacity = '0';
-              setTimeout(() => card.style.display = 'none', 300);
-            }
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.85)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300); // Matches opacity fadeout transition
           }
         });
       });
     });
   }
 
-  // === 10. CERTIFICATES LIGHTBOX MODAL ===
-  const certCards = document.querySelectorAll('.cert-card');
+  // === 7. CERTIFICATES IMAGE LIGHTBOX MODAL ===
   const lightbox = document.getElementById('lightbox');
-  
-  if (certCards.length > 0 && lightbox) {
+  const certTriggers = document.querySelectorAll('.cert-trigger');
+  const viewCertBtns = document.querySelectorAll('.view-cert-btn');
+
+  if (lightbox) {
     const lightboxImg = lightbox.querySelector('img');
     const lightboxCaption = lightbox.querySelector('.lightbox-caption');
     const lightboxClose = lightbox.querySelector('.lightbox-close');
 
-    certCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const img = card.querySelector('.cert-img-container img');
-        const title = card.querySelector('.cert-details h3').textContent;
-        const issuer = card.querySelector('.cert-details p').textContent;
+    const openLightbox = (cardElement) => {
+      const img = cardElement.querySelector('.cert-img-container img');
+      const title = cardElement.querySelector('h3').textContent;
+      const issuer = cardElement.querySelector('.cert-issuer').textContent;
 
-        if (img) {
-          lightboxImg.src = img.src;
-          lightboxCaption.textContent = `${title} - ${issuer}`;
-          lightbox.classList.add('active');
-        }
+      if (img && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = `${title} — ${issuer}`;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      }
+    };
+
+    // Connect trigger click on images
+    certTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        const card = e.target.closest('.cert-card');
+        if (card) openLightbox(card);
+      });
+    });
+
+    // Connect trigger click on buttons
+    viewCertBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.cert-card');
+        if (card) openLightbox(card);
       });
     });
 
     const closeLightbox = () => {
       lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
     };
 
-    lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    
+    // Close on clicking backdrop
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
         closeLightbox();
       }
     });
 
+    // Escape Key closing
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
     });
   }
 
-  // === 11. CONTACT FORM VALIDATION ===
-  const contactForm = document.getElementById('contact-form');
+  // === 8. FLOATING TOAST ALERTS ===
   const alertPopup = document.getElementById('alert-popup');
-
-  if (contactForm && alertPopup) {
-    const inputs = contactForm.querySelectorAll('.form-input');
+  
+  const showAlert = (message, type = 'success') => {
+    if (!alertPopup) return;
     
-    // Quick helper to show alert
-    const showAlert = (message, type = 'success') => {
-      alertPopup.className = `alert-popup ${type} show`;
-      alertPopup.querySelector('span').textContent = message;
-      
-      const icon = alertPopup.querySelector('i');
-      if (type === 'success') {
-        icon.className = 'fa-solid fa-circle-check';
-      } else {
-        icon.className = 'fa-solid fa-circle-exclamation';
-      }
+    alertPopup.className = `alert-popup ${type} show`;
+    alertPopup.querySelector('span').textContent = message;
+    
+    const icon = alertPopup.querySelector('i');
+    if (type === 'success') {
+      icon.className = 'fa-solid fa-circle-check';
+    } else {
+      icon.className = 'fa-solid fa-circle-exclamation';
+    }
 
-      setTimeout(() => {
-        alertPopup.classList.remove('show');
-      }, 4000);
-    };
+    // Auto fadeout after 4 seconds
+    setTimeout(() => {
+      alertPopup.classList.remove('show');
+    }, 4000);
+  };
+
+  // === 9. CONTACT FORM INTERACTIVE VALIDATION ===
+  const contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+    const inputs = contactForm.querySelectorAll('.form-input');
 
     const validateField = (input) => {
-      const group = input.parentElement;
+      const container = input.parentElement;
+      const val = input.value.trim();
       let isValid = true;
       let errorMsg = '';
 
-      const val = input.value.trim();
-
-      if (!val) {
+      if (input.required && !val) {
         isValid = false;
         errorMsg = 'This field is required.';
       } else if (input.type === 'email') {
-        // Simple email regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(val)) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(val)) {
           isValid = false;
           errorMsg = 'Please enter a valid email address.';
         }
       } else if (input.id === 'name' && val.length < 2) {
         isValid = false;
-        errorMsg = 'Name must be at least 2 characters.';
+        errorMsg = 'Name must contain at least 2 characters.';
       } else if (input.id === 'message' && val.length < 10) {
         isValid = false;
-        errorMsg = 'Message must be at least 10 characters.';
+        errorMsg = 'Message must contain at least 10 characters.';
       }
 
-      // Remove existing error if any
-      const existingError = group.querySelector('.error-text');
-      if (existingError) existingError.remove();
+      // Clean existing error blocks
+      const oldError = container.querySelector('.error-text');
+      if (oldError) oldError.remove();
 
       if (!isValid) {
-        group.classList.add('error');
-        const errSpan = document.createElement('span');
-        errSpan.className = 'error-text';
-        errSpan.textContent = errorMsg;
-        group.appendChild(errSpan);
+        container.classList.add('error');
+        const errBlock = document.createElement('span');
+        errBlock.className = 'error-text';
+        errBlock.textContent = errorMsg;
+        container.appendChild(errBlock);
       } else {
-        group.classList.remove('error');
+        container.classList.remove('error');
       }
 
       return isValid;
     };
 
-    // Live validation on blur
+    // Live validation when users blur focus out of fields
     inputs.forEach(input => {
       input.addEventListener('blur', () => {
         validateField(input);
       });
-      // Clear error on input
+
+      // Clear layout errors instantly as they start typing
       input.addEventListener('input', () => {
-        const group = input.parentElement;
-        group.classList.remove('error');
-        const existingError = group.querySelector('.error-text');
-        if (existingError) existingError.remove();
+        const container = input.parentElement;
+        container.classList.remove('error');
+        const errorText = container.querySelector('.error-text');
+        if (errorText) errorText.remove();
       });
     });
 
+    // Form submit intercept
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
@@ -362,18 +352,37 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (formIsValid) {
-        // Simulated form submission (would connect to formspree or web3forms)
-        showAlert('Thank you! Your message was sent successfully.', 'success');
+        // Simulate sending and trigger alert
+        showAlert('Message sent successfully! I will respond shortly.', 'success');
         contactForm.reset();
         
-        // Reset floating label styles
+        // Reset floating states
         inputs.forEach(input => {
-          const group = input.parentElement;
-          group.classList.remove('error');
+          input.parentElement.classList.remove('error');
         });
       } else {
-        showAlert('Please correct the errors in the form.', 'error');
+        showAlert('Form contains errors. Please correct them and try again.', 'error');
       }
+    });
+  }
+
+  // === 10. BACK TO TOP SCROLL BUTTON ===
+  const backToTopBtn = document.getElementById('backToTop');
+  
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   }
 });
